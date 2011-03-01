@@ -1,8 +1,70 @@
-whitelistr - A Minecraft Server invitation system
+﻿whitelistr - A Minecraft Server invitation system - Version 0.4b
 
-Developed in-house by luaduck. Licenced in the public domain.
 
+
+	WARNING
+	This system is in an OPEN BETA condtion. I do not hold any responsibility for any bugs or exploits that kill your cat, cause a disturbance in the magnetic field of the earth, or re-awaken Hitler. You have been warned.
+	As a result, do not use this system in a production environment where security is key YET.
+	I encourage you to fork this project on github (link below) and fix bugs yourself - but if you have a security exploit that you feel is too sensitive, send it to me+whitelistrsecurity@luaduck.co.uk
+
+
+What this system does:
+	Stores information in a flat-file based architecture
+	
+What this system does not do YET:
+	Allow any kind of MySQL support. This will be added in at a later date.
+	Let you run scripts at various points through authentication. Feel free to fork and do this, and I'll merge it later.
+	Look pretty. I'm working on porting a lot of this so it's AJAX ready, for super-slick transitions, but for the time being some CSS wizardry will have to do.
+
+
+Planned features:
+	Revised Admin Control Panel, with ability to revoke users / keys (0.5b)
+	Admin user accounts, with permissions (and security that isn't md5) (0.5b)
+	
+Developed in-house by luaduck 2011. Licenced in the public domain.
+
+Contact me at http://luaduck.co.uk/page.php?id=contact or just e-mail me+whitelistr@luaduck.co.uk
+
+Dependencies:
+Linux / Windows (tested on Debian Lenny & Arch Linux)
+Apache2 / some webserver with something akin to .htaccess
+PHP5 (PHP4 untested)
+Minecraft Server with a whitelisting plugin (something like hmod / bukkit)
+The ability to create symbolic links (ln -s)
+
+Instructions:
+1: Place all files in a web-accessible directory (it doesn't matter if it's a subdirectory)
+2: Edit includes/config.php to your liking - make sure to enable the pulltab!
+2a: Set up your administration md5 in the config file- a good site for this is http://md5-hash-online.waraxe.us/ - the included one defaults to "password"
+3: Create a symbolic link between secure/whitelist.txt and your Minecraft whitelist
+	(Linux example: ln -s /path/to/minecraft/whitelist.txt /path/to/whitelistr/secure/whitelist.txt)
+	Make sure your webserver can write to it (Linux example: chown :www-data /path/to/whitelistr/secure/whitelist.txt & chmod 770 /path/to/whitelistr/secure/whitelist.txt)
+4: Ensure that secure/ cannot be read remotely - there's a .htaccess in the root directory for Apache2, but if you're using a different httpd or your host doesn't have allowoverrides set correctly you'll need to find a different solution
+5: Test the system out by generating a key and then registering yourself.
+
+Customisation:
+Images are stored in /media/ (logo.png is a 300x100 banner, favicon.ico is a 32x32 .ico file, and favicon.png is identical to favicon.ico), and the stylesheet is stored in /includes/. Proper theming support will come at a later date.
+
+Troubleshooting:
+
+Error codes:
+00: You haven't filled out the form correctly / you're trying to access whitelist.php directly
+01: Invalid characters in the username
+02: Failed to open the emails file for writing. Check permissions on secure/emails.txt?
+03: Failed to write to the emails file. Check permissions on secure/emails.txt?
+04: Failed to close the emails file. E-mail me+whitelistr@luaduck.co.uk with details if you get this.
+05: Failed to open the whitelist file for writing. Check permissions on secure/whitelist.txt?
+06: Failed to write to the whitelist file. Check permissions on secure/whitelist.txt?
+07: Failed to close the whitelist file. E-mail me+whitelistr@luaduck.co.uk with details if you get this.
+08: Invalid key / not registered.
+09: Maybe you should read instruction #2 a little closer next time
+a01: Failed to open the keyfile. Check permissions on admin/keys.txt?
+a02: Failed to write to the keyfile. Check permissions on admin/keys.txt?
+a03: Failed to close the keyfile. E-mail me+whitelistr@luaduck.co.uk with details if you get this.
 
 Changelog:
-
-- Initial Commit. This system is not yet ready for public use.
+Pub 0.4b: First public release. Tidied code up a bit. Added a not-final frontend.
+Prv 0.3b: Initial version of the admin authentication system implimented (uses md5summing, not secure for a production environment YET).
+Prv 0.2b: Added snazzy graphics to media/ and prettied the UI a little. UI is still not final. Added initial configuration support to includes/config.php (incomplete). Improved error handling slightly.
+Prv 0.1b: Added initial versions of index.php, whitelist.php, admin/admin.php, admin/keygen.php, admin/keys.txt, includes/include.php, and secure/emails.txt.
+Pub 0.0: Initial Commit. This system is not yet ready for public use.

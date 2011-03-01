@@ -1,0 +1,20 @@
+﻿body {
+	background:#1c1c1c url('../media/background.png') no-repeat center top fixed;
+	text-align:center;
+}
+
+h1#logo {
+	background:url('../media/logob.png') no-repeat center top;
+	display:block;
+	width:300px;
+	height:100px;
+	overflow:hidden;
+	margin:0 auto;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+table { 
+margin-left: auto;
+margin-right: auto;
+}

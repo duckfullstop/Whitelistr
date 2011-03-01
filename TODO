@@ -1,0 +1,8 @@
+for 0.4b,
+[*] Get key removal working correctly (can flip out if it's the last one) - used ===
+[ ] Make a shiny project sitelet about it
+[ ] Run full system test
+[ ] Push to github
+
+for 0.5b,
+[ ] Migrate everything to ajax / POST
